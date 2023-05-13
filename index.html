@@ -15,7 +15,7 @@
             <h1>{{h1text}}</h1>
             <div class="menu">
                 <div class="game-state">{{h2text}}: <span class="game-state--text"
-                        :class="gameState">{{gameState}}</span></div>
+                        :class="gameState.style">{{gameState.text}}</span></div>
                 <div class="fails" :style="failsStyle">{{h3text}}: <span>{{fails}}</span>/{{maxFails}}</div>
                 <div class="new-game">
                     <button @click="startGame()">{{buttonText}}</button>
@@ -32,12 +32,14 @@
                     key
                     }}</button>
             </div>
+            <!--
             <pre>
-                <!--
+                
                 tried Keys: {{triedKeys}}
-                -->
+                
                 guesses: {{guesses}}
             </pre>
+            -->
         </main>
     </div>
     <script src="vue.js"></script>
