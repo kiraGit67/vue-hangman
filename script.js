@@ -3,7 +3,8 @@
 Vue.createApp({
   data() {
     return {
-      h1text: "Let's Play HangMan!",
+      h1text: "HangMan!",
+      h1span: "Let's Play ",
       h2text: "Status",
       h3text: "Fails",
       buttonText: "New Game",
@@ -24,6 +25,9 @@ Vue.createApp({
       guesses: [],
       fails: 0,
       maxFails: 10,
+      hitChars: 0,
+      winningScore: 0,
+      maxWinningScore: 10,
     };
   },
   created() {
@@ -36,6 +40,9 @@ Vue.createApp({
       //this.triedKeys = [];
       this.randomWord = this.pickRandomWord();
       this.guesses = [];
+      this.hitChars = 0;
+      this.winningScore = 0;
+      this.maxWinningScore = 10;
     },
     pickRandomWord() {
       function getRandomNumber(min, max) {
@@ -57,7 +64,9 @@ Vue.createApp({
 
       if (!this.randomWord.includes(letter)) {
         this.fails++;
+        this.maxWinningScore--;
       } else {
+        this.hitChars++;
       }
     },
     splitAlphabet() {
@@ -89,6 +98,7 @@ Vue.createApp({
         }, true)
       ) {
         //return "win";
+        this.winningScore = this.maxWinningScore;
         return {
           text: "Game Won!",
           style: "win",
@@ -118,7 +128,9 @@ Vue.createApp({
     },
     winStyle() {
       return {
-        color: `hsl(120, ${this.guesses.length * 10}%, 25%)`,
+        color: `hsl(120, ${
+          this.hitChars * (100 / this.randomWord.length)
+        }%, 25%)`,
       };
     },
     /*
