@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman Game with Vue</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <h1>{{h1text}}</h1>
+            <div class="menu">
+                <div class="game-state">{{h2text}}: <span class="game-state--text">{{gameState}}</span></div>
+                <div class="fails" :style="failsStyle">{{h3text}}: <span>{{fails}}</span>/{{maxFails}}</div>
+                <div class="new-game">
+                    <button @click="startGame()">{{buttonText}}</button>
+                </div>
+
+            </div>
+        </header>
+        <main>
+            <div class="letters">
+                <div class="letter" :style="winStyle" v-for="randomLetter in randomLetters">{{ randomLetter }}</div>
+            </div>
+            <div class="keyboard">
+                <button class="alpha-button" v-for="key in keys" @click="guess(key)" :disabled="isKeyDisabled(key)">{{
+                    key
+                    }}</button>
+            </div>
+            <pre>
+                <!--
+                tried Keys: {{triedKeys}}
+                -->
+                guesses: {{guesses}}
+            </pre>
+        </main>
+    </div>
+    <script src="vue.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
