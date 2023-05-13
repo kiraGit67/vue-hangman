@@ -14,7 +14,8 @@
         <header>
             <h1>{{h1text}}</h1>
             <div class="menu">
-                <div class="game-state">{{h2text}}: <span class="game-state--text">{{gameState}}</span></div>
+                <div class="game-state">{{h2text}}: <span class="game-state--text"
+                        :class="gameState">{{gameState}}</span></div>
                 <div class="fails" :style="failsStyle">{{h3text}}: <span>{{fails}}</span>/{{maxFails}}</div>
                 <div class="new-game">
                     <button @click="startGame()">{{buttonText}}</button>
