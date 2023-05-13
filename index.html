@@ -25,7 +25,8 @@
                     <button @click="startGame()">{{buttonText}}</button>
                 </div>
             </div>
-            <div class="winning-score" v-if="winningScore === maxWinningScore">Score: {{winningScore}} / 10</div>
+            <div class="winning-score" v-if="winningScore === maxWinningScore && maxWinningScore > 0">Score:
+                {{winningScore}} / 10</div>
         </header>
         <main>
             <div class="letters">
