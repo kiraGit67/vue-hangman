@@ -94,15 +94,15 @@ Vue.createApp({
           return false;
         }, true)
       ) {
-        return "WIN!";
+        return "win";
       }
 
       if (this.fails < 10) {
-        return "ACTIVE";
+        return "active";
       }
 
       if (this.fails >= 10) {
-        return "GAME FAILED!";
+        return "fail";
       }
     },
     failsStyle() {
