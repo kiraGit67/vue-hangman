@@ -6,22 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hangman Game with Vue</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600&family=Lobster&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div id="app">
         <header>
-            <h1>{{h1text}}</h1>
+            <h1><span>{{h1span}}</span>{{h1text}}</h1>
             <div class="menu">
-                <div class="game-state">{{h2text}}: <span class="game-state--text"
+                <div class="game-state" :class="gameState.style">{{h2text}}: <span class="game-state--text"
                         :class="gameState.style">{{gameState.text}}</span></div>
                 <div class="fails" :style="failsStyle">{{h3text}}: <span>{{fails}}</span>/{{maxFails}}</div>
                 <div class="new-game">
                     <button @click="startGame()">{{buttonText}}</button>
                 </div>
-
             </div>
+            <div class="winning-score" v-if="winningScore === maxWinningScore">Score: {{winningScore}} / 10</div>
         </header>
         <main>
             <div class="letters">
@@ -34,10 +38,10 @@
             </div>
             <!--
             <pre>
-                
                 tried Keys: {{triedKeys}}
-                
                 guesses: {{guesses}}
+                hitChars: {{hitChars}}
+                maxWinningScore: {{maxWinningScore}}
             </pre>
             -->
         </main>
