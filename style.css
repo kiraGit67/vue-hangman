@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600&family=Lobster&display=swap");
+
 *,
 *::after,
 *::before {
@@ -36,11 +38,33 @@ header {
 header {
   height: 30%;
   justify-content: center;
+  background-color: black;
+  border-bottom: 3px solid hotpink;
+}
+
+header > h1 {
+  font-family: "Lobster";
+  font-size: 3.5rem;
+  color: yellow;
+}
+
+header > h1 > span {
+  font-family: "Dancing Script";
+  font-size: 2.5rem;
+  color: hotpink;
+}
+
+.winning-score {
+  margin-block: 1rem 0;
+  font-family: "Lobster";
+  font-size: 1.2rem;
+  color: yellow;
 }
 
 main {
   height: 70%;
   justify-content: space-around;
+  background: linear-gradient(transparent, dodgerblue);
 }
 
 .menu {
@@ -48,6 +72,7 @@ main {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
+  background-color: yellow;
 }
 
 .menu > * {
@@ -55,13 +80,13 @@ main {
   font-size: 1.5rem;
   text-align: center;
   text-transform: uppercase;
-  border-bottom: 2px solid black;
+  _border-bottom: 2px solid black;
   border-right: 2px solid black;
 }
 
 .menu > *:last-child {
   border-right: none;
-  padding-block: 0.45rem;
+  padding-block: 0.4rem;
 }
 
 .menu > .new-game > button {
@@ -72,28 +97,54 @@ main {
   background-color: transparent;
 }
 
+.game-state--text {
+  font-weight: 600;
+}
+
 .game-state--text.active {
-  color: blue;
+  color: dodgerblue;
 }
 
 .game-state--text.win {
-  color: green;
+  color: limegreen;
+  animation: blink 0.5s steps(3, end) infinite;
 }
 
 .game-state--text.fail {
   color: red;
+  animation: blink 0.5s steps(3, end) infinite;
+}
+
+.game-state.win {
+  border: 4px dotted limegreen;
+}
+
+.game-state.fail {
+  border: 4px dashed red;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .letters {
   display: flex;
   gap: 0.5rem;
-  font-size: 2rem;
+  font-size: 3.5rem;
 }
 
 .keyboard {
   display: grid;
   grid-template-columns: repeat(13, 1fr);
-  gap: 5px;
+  gap: 10px;
 }
 
 .alpha-button {
@@ -103,16 +154,34 @@ main {
   padding: 1.25rem 1.75rem;
   font-family: "Courier New", Courier, monospace;
   font-size: 1.75rem;
-  font-weight: 500;
-  background-color: snow;
-  border: 1px solid lightgrey;
-  border-radius: 5px;
-  box-shadow: 1px 1px 5px inset rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+  background-color: yellow;
+  color: black;
+  border: 2px solid black;
+  box-shadow: 5px 5px 0px hotpink;
+}
+
+.alpha-button:disabled {
+  background-color: black;
+  color: yellow;
+  border-color: yellow;
 }
 
 @media screen and (max-width: 767px) {
   header {
-    height: 35%;
+    height: 40%;
+  }
+
+  header > h1 {
+    font-size: 2.75rem;
+  }
+
+  header > h1 > span {
+    font-size: 1.75rem;
+  }
+
+  .letters {
+    font-size: 2.75rem;
   }
 
   .menu > *,
@@ -121,12 +190,11 @@ main {
   }
 
   main {
-    height: 65%;
+    height: 60%;
   }
 
   .keyboard {
     grid-template-columns: repeat(6, 1fr);
-    gap: 3px;
   }
 
   .alpha-button {
@@ -147,22 +215,20 @@ main {
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
   header {
-    height: 30%;
+    height: 35%;
   }
 
   main {
-    height: 70%;
+    height: 65%;
   }
 
   .keyboard {
     grid-template-columns: repeat(6, 1fr);
-    gap: 3px;
   }
 }
 
 @media screen and (min-width: 992px) and (max-width: 1024px) {
   .keyboard {
     grid-template-columns: repeat(8, 1fr);
-    gap: 4px;
   }
 }
