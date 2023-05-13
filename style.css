@@ -34,12 +34,12 @@ header {
 }
 
 header {
-  height: 20%;
+  height: 30%;
   justify-content: center;
 }
 
 main {
-  height: 80%;
+  height: 70%;
   justify-content: space-around;
 }
 
@@ -108,4 +108,61 @@ main {
   border: 1px solid lightgrey;
   border-radius: 5px;
   box-shadow: 1px 1px 5px inset rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width: 767px) {
+  header {
+    height: 35%;
+  }
+
+  .menu > *,
+  .menu > .new-game > button {
+    font-size: 1.25rem;
+  }
+
+  main {
+    height: 65%;
+  }
+
+  .keyboard {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 3px;
+  }
+
+  .alpha-button {
+    font-size: 1.25rem;
+    padding: 0.75rem 1rem;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .menu {
+    display: block;
+  }
+
+  .menu > * {
+    border-right: none;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  header {
+    height: 30%;
+  }
+
+  main {
+    height: 70%;
+  }
+
+  .keyboard {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 3px;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1024px) {
+  .keyboard {
+    grid-template-columns: repeat(8, 1fr);
+    gap: 4px;
+  }
 }
