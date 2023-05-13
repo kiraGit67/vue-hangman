@@ -63,13 +63,7 @@ Vue.createApp({
     splitAlphabet() {
       this.keys = "abcdefghijklmnopqrstuvwxyz".split("");
     },
-    keyPress(char) {
-      //console.log(char);
-      this.triedKeys.push(char);
-      //console.log(this.triedKeys);
-    },
     isKeyDisabled(letter) {
-      //return this.triedKeys.includes(letter);
       return this.guesses.includes(letter);
     },
   },
@@ -94,15 +88,27 @@ Vue.createApp({
           return false;
         }, true)
       ) {
-        return "win";
+        //return "win";
+        return {
+          text: "Game Won!",
+          style: "win",
+        };
       }
 
       if (this.fails < 10) {
-        return "active";
+        //return "active";
+        return {
+          text: "Game Active!",
+          style: "active",
+        };
       }
 
       if (this.fails >= 10) {
-        return "fail";
+        //return "fail";
+        return {
+          text: "Game Failed!",
+          style: "fail",
+        };
       }
     },
     failsStyle() {
